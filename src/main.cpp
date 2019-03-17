@@ -37,6 +37,10 @@ int main(int argc, char** argv)
 
 	// register callbacks
     glutDisplayFunc(Renderer::render);
+    glutReshapeFunc([](int w, int h)
+    {
+        Renderer::setScreenDimensions(w, h);
+    });
 
     // TODO: this is just for debugging
     Renderer::mutateState([](Renderer::RendererState* state)

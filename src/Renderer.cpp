@@ -8,6 +8,12 @@
 #include "Renderer.h"
 #include "Triangle.h"
 
+void Renderer::setScreenDimensions(int w, int h)
+{
+    Renderer::state.screen.Width  = w;
+    Renderer::state.screen.Height = h;
+}
+
 void Renderer::mutateState(state_mutation_cb cb)
 {
     cb(&Renderer::state);
@@ -61,16 +67,37 @@ void Renderer::renderPoints(Geometry::Point3D* points, unsigned pcount)
     glEnd();
 }
 
+// TODO: just testing
+#include "Transform.h"
+float translation = 0;
 void Renderer::renderState(RendererState* rs)
 {
+    // TODO: just testing
+    Transform tr;
+    Renderer::translate(tr, translation, translation, 0);
+    translation += 0.1;
+    if(translation > 3)
+    {
+        translation = 0;
+    }
+    Geometry::Mat4 modelMatrix = Renderer::modelMat(tr);
+
+    glPushMatrix();
+    glMultMatrixf(modelMatrix.m);
+    // glTranslatef(1.0, 0.0, 0.0);
+
     renderPoints(rs->points.data(), rs->points.size());
     renderLines(rs->lines.data(), rs->lines.size());
     renderModels(rs->models.data(), rs->models.size());
+
+    glPopMatrix();
 }
 
 // TODO: just testing
 #include "Shader.h"
 #include "Material.h"
+#include <chrono>
+#include <thread>
 
 void Renderer::render()
 {
@@ -83,12 +110,14 @@ void Renderer::render()
     glUseProgram(0);
     // ===========================
 
+    glViewport(0, 0, state.screen.Width, state.screen.Height);
+
     glClearColor(0.20, 0.20, 0.20, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(45, 2, 1, 10);;
+    gluPerspective(45, (float)state.screen.Width/(float)state.screen.Height, 1, 10);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -97,4 +126,7 @@ void Renderer::render()
     renderState(&Renderer::state);
 
     glutSwapBuffers();
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    glutPostRedisplay();
 }

@@ -15,8 +15,25 @@ namespace Renderer
         // TODO: entities to render with this material
     };
 
+    union Screen
+    {
+        unsigned dimensions[2];
+        struct
+        {
+            int Width;
+            int Height;
+        };
+
+        Screen()
+        {
+            dimensions[0] = dimensions[1] = 0;
+        }
+    };
+
     struct RendererState
     {
+        Screen screen;
+
         std::vector<Geometry::Point3D> points;
         std::vector<Geometry::Line> lines;
         std::vector<Renderer::Model> models;
@@ -30,6 +47,8 @@ namespace Renderer
     {
         static RendererState state;
     }
+
+    void setScreenDimensions(int w, int h);
 
     void mutateState(state_mutation_cb cb);
 

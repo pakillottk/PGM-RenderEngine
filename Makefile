@@ -177,6 +177,33 @@ src/Log.cpp.s:
 	$(MAKE) -f CMakeFiles/build/opengl-dod.out.dir/build.make CMakeFiles/build/opengl-dod.out.dir/src/Log.cpp.s
 .PHONY : src/Log.cpp.s
 
+src/Mat4.o: src/Mat4.cpp.o
+
+.PHONY : src/Mat4.o
+
+# target to build an object file
+src/Mat4.cpp.o:
+	$(MAKE) -f CMakeFiles/build/opengl-dod.out.dir/build.make CMakeFiles/build/opengl-dod.out.dir/src/Mat4.cpp.o
+.PHONY : src/Mat4.cpp.o
+
+src/Mat4.i: src/Mat4.cpp.i
+
+.PHONY : src/Mat4.i
+
+# target to preprocess a source file
+src/Mat4.cpp.i:
+	$(MAKE) -f CMakeFiles/build/opengl-dod.out.dir/build.make CMakeFiles/build/opengl-dod.out.dir/src/Mat4.cpp.i
+.PHONY : src/Mat4.cpp.i
+
+src/Mat4.s: src/Mat4.cpp.s
+
+.PHONY : src/Mat4.s
+
+# target to generate assembly for a file
+src/Mat4.cpp.s:
+	$(MAKE) -f CMakeFiles/build/opengl-dod.out.dir/build.make CMakeFiles/build/opengl-dod.out.dir/src/Mat4.cpp.s
+.PHONY : src/Mat4.cpp.s
+
 src/Material.o: src/Material.cpp.o
 
 .PHONY : src/Material.o
@@ -203,6 +230,33 @@ src/Material.s: src/Material.cpp.s
 src/Material.cpp.s:
 	$(MAKE) -f CMakeFiles/build/opengl-dod.out.dir/build.make CMakeFiles/build/opengl-dod.out.dir/src/Material.cpp.s
 .PHONY : src/Material.cpp.s
+
+src/Quaternion.o: src/Quaternion.cpp.o
+
+.PHONY : src/Quaternion.o
+
+# target to build an object file
+src/Quaternion.cpp.o:
+	$(MAKE) -f CMakeFiles/build/opengl-dod.out.dir/build.make CMakeFiles/build/opengl-dod.out.dir/src/Quaternion.cpp.o
+.PHONY : src/Quaternion.cpp.o
+
+src/Quaternion.i: src/Quaternion.cpp.i
+
+.PHONY : src/Quaternion.i
+
+# target to preprocess a source file
+src/Quaternion.cpp.i:
+	$(MAKE) -f CMakeFiles/build/opengl-dod.out.dir/build.make CMakeFiles/build/opengl-dod.out.dir/src/Quaternion.cpp.i
+.PHONY : src/Quaternion.cpp.i
+
+src/Quaternion.s: src/Quaternion.cpp.s
+
+.PHONY : src/Quaternion.s
+
+# target to generate assembly for a file
+src/Quaternion.cpp.s:
+	$(MAKE) -f CMakeFiles/build/opengl-dod.out.dir/build.make CMakeFiles/build/opengl-dod.out.dir/src/Quaternion.cpp.s
+.PHONY : src/Quaternion.cpp.s
 
 src/Renderer.o: src/Renderer.cpp.o
 
@@ -285,6 +339,33 @@ src/Transform.cpp.s:
 	$(MAKE) -f CMakeFiles/build/opengl-dod.out.dir/build.make CMakeFiles/build/opengl-dod.out.dir/src/Transform.cpp.s
 .PHONY : src/Transform.cpp.s
 
+src/Vector3D.o: src/Vector3D.cpp.o
+
+.PHONY : src/Vector3D.o
+
+# target to build an object file
+src/Vector3D.cpp.o:
+	$(MAKE) -f CMakeFiles/build/opengl-dod.out.dir/build.make CMakeFiles/build/opengl-dod.out.dir/src/Vector3D.cpp.o
+.PHONY : src/Vector3D.cpp.o
+
+src/Vector3D.i: src/Vector3D.cpp.i
+
+.PHONY : src/Vector3D.i
+
+# target to preprocess a source file
+src/Vector3D.cpp.i:
+	$(MAKE) -f CMakeFiles/build/opengl-dod.out.dir/build.make CMakeFiles/build/opengl-dod.out.dir/src/Vector3D.cpp.i
+.PHONY : src/Vector3D.cpp.i
+
+src/Vector3D.s: src/Vector3D.cpp.s
+
+.PHONY : src/Vector3D.s
+
+# target to generate assembly for a file
+src/Vector3D.cpp.s:
+	$(MAKE) -f CMakeFiles/build/opengl-dod.out.dir/build.make CMakeFiles/build/opengl-dod.out.dir/src/Vector3D.cpp.s
+.PHONY : src/Vector3D.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -327,9 +408,15 @@ help:
 	@echo "... src/Log.o"
 	@echo "... src/Log.i"
 	@echo "... src/Log.s"
+	@echo "... src/Mat4.o"
+	@echo "... src/Mat4.i"
+	@echo "... src/Mat4.s"
 	@echo "... src/Material.o"
 	@echo "... src/Material.i"
 	@echo "... src/Material.s"
+	@echo "... src/Quaternion.o"
+	@echo "... src/Quaternion.i"
+	@echo "... src/Quaternion.s"
 	@echo "... src/Renderer.o"
 	@echo "... src/Renderer.i"
 	@echo "... src/Renderer.s"
@@ -339,6 +426,9 @@ help:
 	@echo "... src/Transform.o"
 	@echo "... src/Transform.i"
 	@echo "... src/Transform.s"
+	@echo "... src/Vector3D.o"
+	@echo "... src/Vector3D.i"
+	@echo "... src/Vector3D.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
