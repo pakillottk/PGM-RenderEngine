@@ -53,5 +53,6 @@ namespace Geometry
     Mat4 scale(float x, float y, float z);
     Mat4 scale(float s);
     Mat4 rotation(const Quaternion& q);
+    Mat4 rotation(const Vector3D& axis, float angle);
     Mat4 rotation(float x, float y, float z, float angle);
 };

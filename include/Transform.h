@@ -23,7 +23,7 @@ namespace Renderer
     Geometry::Vector3D& translate(Transform& tr, const Geometry::Vector3D& translation);
     Geometry::Vector3D& translate(Transform& tr, float x, float y, float z);
     
-    Geometry::Quaternion& rotate(Transform& tr, const Geometry::Quaternion& q);
+    Geometry::Quaternion& rotate(Transform& tr, Geometry::Quaternion& q);
     Geometry::Quaternion& rotate(Transform& tr, const Geometry::Vector3D& axis, float angle);
     Geometry::Quaternion& rotate(Transform& tr, float x, float y, float z, float angle);
 

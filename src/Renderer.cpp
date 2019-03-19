@@ -69,16 +69,32 @@ void Renderer::renderPoints(Geometry::Point3D* points, unsigned pcount)
 
 // TODO: just testing
 #include "Transform.h"
-float translation = 0;
+static float translation = -3.0;
+static float scaleFactor = -3.0;
+static float rotation = -6.28319;
 void Renderer::renderState(RendererState* rs)
 {
     // TODO: just testing
     Transform tr;
     Renderer::translate(tr, translation, translation, 0);
-    translation += 0.1;
+    Renderer::scale(tr, scaleFactor);
+    Geometry::Quaternion q = Geometry::quat(0, 0, 1, rotation);
+    tr.rotation = q;
+    //Renderer::rotate(tr, q);
+    translation += 0.05;
     if(translation > 3)
     {
-        translation = 0;
+        translation = -3.0;
+    }
+    scaleFactor += 0.05;
+    if(scaleFactor > 3)
+    {
+        scaleFactor = -3.0;
+    }
+    rotation += 0.05;
+    if(rotation > 6.28319)
+    {
+        rotation = -6.28319;
     }
     Geometry::Mat4 modelMatrix = Renderer::modelMat(tr);
 
@@ -127,6 +143,6 @@ void Renderer::render()
 
     glutSwapBuffers();
 
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    std::this_thread::sleep_for(std::chrono::milliseconds(16));
     glutPostRedisplay();
 }

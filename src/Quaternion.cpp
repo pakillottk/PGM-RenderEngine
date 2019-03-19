@@ -1,5 +1,7 @@
 #include "Quaternion.h"
 #include "Mat4.h"
+#include "LoopTemplates.h"
+#include <cmath>
 
 Geometry::Quaternion Geometry::quat(float x, float y, float z, float angle)
 {
@@ -10,7 +12,7 @@ Geometry::Quaternion Geometry::quat(float x, float y, float z, float angle)
     return q;
 }    
 
-Geometry::Quaternion Geometry::quat(const Vector3D axis, float angle)
+Geometry::Quaternion Geometry::quat(const Vector3D& axis, float angle)
 {
     Quaternion q;
     q.Axis = axis;
@@ -19,7 +21,28 @@ Geometry::Quaternion Geometry::quat(const Vector3D axis, float angle)
     return q;
 }
 
-Geometry::Mat4 Geometry::quatMatrix(const Quaternion& q)
+Geometry::Quaternion Geometry::conjugate(const Quaternion& q)
 {
-    return rotation(q);
+    Quaternion conj(q);
+    conj.Axis = conj.Axis * -1;
+    return conj; 
+}
+
+float Geometry::squaredNorm(const Quaternion& q)
+{
+    return Geometry::length(q.Axis) + q.W * q.W;
+}
+
+float Geometry::norm(const Quaternion& q)
+{
+    return sqrt(squaredNorm(q));
+}
+
+Geometry::Quaternion& Geometry::normalize(Quaternion& q)
+{
+    short i = 0;
+    float norm = Geometry::norm(q);
+    LOOP3(q.data[i++] /= norm;)
+
+    return q;
 }

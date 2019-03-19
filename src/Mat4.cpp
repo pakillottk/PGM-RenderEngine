@@ -96,33 +96,24 @@ Geometry::Mat4 Geometry::rotation(const Quaternion& q)
 {
     Mat4 mat = mat4();
 
-    // TODO: this is wrong
-    // float sqw = q.W*q.W;
-    // float sqx = q.X*q.X;
-    // float sqy = q.Y*q.Y;
-    // float sqz = q.Z*q.Z;
+    mat.m00 = 1 - 2 * q.Y * q.Y - 2 *q.Z * q.Z;
+    mat.m01 = 2 * q.X * q.Y - 2 * q.Z * q.W;
+    mat.m02 = 2 * q.X * q.Z + 2 * q.Y * q.W;
 
-    // // invs (inverse square length) is only required if quaternion is not already normalised
-    // float invs = 1 / (sqx + sqy + sqz + sqw);
-    // mat.m00 = ( sqx - sqy - sqz + sqw)*invs; // since sqw + sqx + sqy + sqz =1/invs*invs
-    // mat.m11 = (-sqx + sqy - sqz + sqw)*invs;
-    // mat.m22 = (-sqx - sqy + sqz + sqw)*invs ;
-    
-    // float tmp1 = q.X*q.Y;
-    // float tmp2 = q.Z*q.W;
-    // mat.m10 = 2.0 * (tmp1 + tmp2)*invs ;
-    // mat.m01 = 2.0 * (tmp1 - tmp2)*invs ;
-    
-    // tmp1 = q.X*q.Z;
-    // tmp2 = q.Y*q.W;
-    // mat.m20 = 2.0 * (tmp1 - tmp2)*invs ;
-    // mat.m02 = 2.0 * (tmp1 + tmp2)*invs ;
-    // tmp1 = q.Y*q.Z;
-    // tmp2 = q.X*q.W;
-    // mat.m21 = 2.0 * (tmp1 + tmp2)*invs ;
-    // mat.m12 = 2.0 * (tmp1 - tmp2)*invs ;    
+    mat.m10 = 2 * q.X * q.Y + 2 *q.Z * q.W;
+    mat.m11 = 1 - 2 * q.X * q.X - 2 * q.Z * q.Z;
+    mat.m12 = 2 * q.Y * q.Z - 2 * q.X * q.W;
+
+    mat.m20 = 2 * q.X * q.Z - 2 * q.Y * q.W;
+    mat.m21 = 2 * q.Y * q.Z + 2 * q.X * q.W;
+    mat.m22 = 1 - 2 * q.X * q.X - 2 * q.Y * q.Y;
 
     return mat;  
+}
+
+Geometry::Mat4 Geometry::rotation(const Vector3D& axis, float angle)
+{
+    return Geometry::rotation(axis.X, axis.Y, axis.Z, angle);
 }
 
 Geometry::Mat4 Geometry::rotation(float x, float y, float z, float angle)

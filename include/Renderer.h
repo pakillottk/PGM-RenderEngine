@@ -2,7 +2,7 @@
 
 #include <vector>
 #include "Material.h"
-#include "Entity.h"
+// #include "Entity.h"
 #include "Point3D.h"
 #include "Line.h"
 #include "Model.h"

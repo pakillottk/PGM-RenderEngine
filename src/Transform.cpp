@@ -3,7 +3,7 @@
 
 Geometry::Mat4 Renderer::modelMat(const Transform& t)
 {
-    return Geometry::translation(t.position) * Geometry::rotation(t.rotation) * Geometry::scale(t.scale);
+    return Geometry::translation(t.position) * Geometry::rotation(t.rotation.Axis, t.rotation.W) * Geometry::scale(t.scale);
 }
 
 Geometry::Vector3D& Renderer::translate(Transform& tr, const Geometry::Vector3D& translation)
@@ -18,9 +18,9 @@ Geometry::Vector3D& Renderer::translate(Transform& tr, float x, float y, float z
     return tr.position;
 }
 
-Geometry::Quaternion& Renderer::rotate(Transform& tr, const Geometry::Quaternion& q)
+Geometry::Quaternion& Renderer::rotate(Transform& tr, Geometry::Quaternion& q)
 {
-    // TODO: quat multiplication
+    tr.rotation = q * tr.rotation;
     return tr.rotation;
 }
 
