@@ -29,7 +29,7 @@ namespace Renderer
 
     struct Shader
     {
-        unsigned id;
+        int id;
         std::map<std::string, Uniform> uniforms;
     };
     

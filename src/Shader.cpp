@@ -9,9 +9,9 @@
 #include <GL/glu.h>
 #include <GL/glext.h>
 
-unsigned createAndCompileShader(const char* code, GLenum type)
+int createAndCompileShader(const char* code, GLenum type)
 {
-    unsigned id = glCreateShader(type);
+    int id = glCreateShader(type);
     glShaderSource(id, 1, &code, NULL);
     glCompileShader(id);
     // print compile errors if any
@@ -37,8 +37,8 @@ Renderer::Shader Renderer::buildShader(const char* vertexFile, const char* fragm
     const char* vertexCode = IO::readTextFile(vertexFile);
     const char* fragmentCode = IO::readTextFile(fragmentFile);
 
-    unsigned vertex = createAndCompileShader(vertexCode, GL_VERTEX_SHADER);
-    unsigned fragment = createAndCompileShader(fragmentCode, GL_FRAGMENT_SHADER);
+    int vertex = createAndCompileShader(vertexCode, GL_VERTEX_SHADER);
+    int fragment = createAndCompileShader(fragmentCode, GL_FRAGMENT_SHADER);
 
     if(vertex < 0 || fragment < 0)
     {
